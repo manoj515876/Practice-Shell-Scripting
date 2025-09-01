@@ -82,3 +82,20 @@ else
 fi
 
 
+dnf list installed git 
+
+if [ $? -ne 0 ]
+then 
+    dnf install git 
+    if [ $? -ne 0 ]
+    then 
+        echo "Git installing faliure"
+    else 
+        echo "Git installing success"
+    fi 
+else 
+    echo "Git already Installed"
+fi
+
+
+
