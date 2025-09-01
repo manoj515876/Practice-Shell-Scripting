@@ -1,27 +1,27 @@
 #!/bin/bash
 
 # Printing Hello World!
-echo "Hello World!"
+# echo "Hello World!"
 
 # Storing Manoj in variable
-name=Manoj
-echo "Hello $name"
+# name=Manoj
+# echo "Hello $name"
 
 # Command lines Arguments $1->First argument $2->Second argument
 # echo "Hi $1"
 # echo "Hi $2, How can I help you"
 
 # Taking username and Password from user.
-echo "Enter your username"
-read USERNAME
-echo "Your username is $USERNAME"
+# echo "Enter your username"
+# read USERNAME
+# echo "Your username is $USERNAME"
 
-echo "Enter your password"
-read -s PASSWD
+# echo "Enter your password"
+# read -s PASSWD
 
 # Any output can store in a variable we can use $() for example 
-TIMESTAMP=$(date)
-echo "Script excuted at $TIMESTAMP"
+# TIMESTAMP=$(date)
+# echo "Script excuted at $TIMESTAMP"
 
 # Taking 2 numbers and printing it's sum
 # NUMBER1=$1
@@ -30,30 +30,54 @@ echo "Script excuted at $TIMESTAMP"
 # echo "Sum of $NUMBER1 and $NUMBER2 is $SUM"
 
 # Arrays 
-NAME=("Manoj" "Mantha" "Thippeswamy" "Radha" "Mounika")
-echo "First Name : ${NAME[0]}"
-echo "Last Name : ${NAME[4]}"
-echo "Name : ${NAME[@]}"
+# NAME=("Manoj" "Mantha" "Thippeswamy" "Radha" "Mounika")
+# echo "First Name : ${NAME[0]}"
+# echo "Last Name : ${NAME[4]}"
+# echo "Name : ${NAME[@]}"
 
-# Special Variables
-echo "All variables passed : $@" 
-echo "Number of variables : $#"
-echo "Script name : $0"
-echo "Present Working Directory : $PWD"
-echo "Home working directory : $HOME"
-echo "which user is running the script : $USER"
-echo "process id of current script : $$"
-sleep 10 &
-echo "Process id of last command in background : $!"
+# # Special Variables
+# echo "All variables passed : $@" 
+# echo "Number of variables : $#"
+# echo "Script name : $0"
+# echo "Present Working Directory : $PWD"
+# echo "Home working directory : $HOME"
+# echo "which user is running the script : $USER"
+# echo "process id of current script : $$"
+# sleep 10 &
+# echo "Process id of last command in background : $!"
 
 # Condition Check given number is greater than or equal to 100 or not 
 
-if [ $1 -ge 100 ]
-then
-    echo "Given number $1 is greater than or equal to 100"
-else
-    echo "Given number $1 is less than 100"
+# if [ $1 -ge 100 ]
+# then
+#     echo "Given number $1 is greater than or equal to 100"
+# else
+#     echo "Given number $1 is less than 100"
+# fi
+
+#Installing sql and git using shell scripting
+
+USERID=$(id -u)
+
+if [ USERID -ne 0 ]
+then 
+    echo "Error:: You must have sudo access to the script"
+    exit 1
 fi
 
+dnf list installed mysql
+
+if [ $? -ne 0 ]
+then    
+    dnf install mysql -y
+    if [ $? -ne 0 ]
+    then 
+        echo "Mysql installation failure"
+        exit 1
+    else 
+        echo "Mysql installation Success"
+else 
+    echo "Already mysql installed"
+fi
 
 
