@@ -29,11 +29,22 @@ NUMBER2=$2
 SUM=$(($NUMBER1+$NUMBER1))
 echo "Sum of $NUMBER1 and $NUMBER2 is $SUM"
 
-#arrays 
+# Arrays 
 NAME=("Manoj" "Mantha" "Thippeswamy" "Radha" "Mounika")
 echo "First Name : ${NAME[0]}"
 echo "Last Name : ${NAME[4]}"
 echo "Name : ${NAME[@]}"
+
+# Special Variables
+echo "All variables passed : $@" 
+echo "Number of variables : $#"
+echo "Script name : $0"
+echo "Present Working Directory : $PWD"
+echo "Home working directory : $HOME"
+echo "which user is running the script : $USER"
+echo "process id of current script : $$"
+sleep 10 &
+echo "Process id of last command in background : $!"
 
 
 
