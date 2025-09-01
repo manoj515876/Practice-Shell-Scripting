@@ -29,5 +29,12 @@ NUMBER2=$2
 SUM=$(($NUMBER1+$NUMBER1))
 echo "Sum of $NUMBER1 and $NUMBER2 is $SUM"
 
+#arrays 
+NAME=("Manoj" "Mantha" "Thippeswamy" "Radha" "Mounika")
+echo "First Name : ${NAME[0]}"
+echo "Last Name : ${NAME[4]}"
+echo "Name : ${NAME[@]}"
+echo "Length : ${Name[#]}"
+
 
 
