@@ -99,17 +99,23 @@
 # fi
 
 
-# Installing packages using functions 
+# Installing packages using functions and Colours 
+
+# Colours
+N="\e[30m"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
 
 USERID=$(id -u)
 
 VALIDATE(){
     if [ $1 -ne 0 ]
     then 
-        echo "$2 ... FAILURE"
+        echo -e "$2 ... $R FAILURE $N"
         exit 1
     else 
-        echo "$2 ... SUCCESS"
+        echo -e "$2 ... $G SUCCESS $N"
     fi
 }
 
@@ -126,7 +132,7 @@ then
     dnf install mysql -y 
     VALIDATE $? "Installing mysql"
 else 
-    echo "MySQL already isntalled ... SKIPPING"
+    echo "MySQL already isntalled ... $Y SKIPPING $N"
 fi
 
 dnf list installed git 
@@ -136,6 +142,6 @@ then
     dnf install git -y 
     VALIDATE $? "Installing Git"
 else 
-    echo "Git already Installed ... SKIPPING"
+    echo "Git already Installed ... $Y SKIPPING $N"
 fi 
 
