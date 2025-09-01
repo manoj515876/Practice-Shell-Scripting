@@ -24,10 +24,10 @@ TIMESTAMP=$(date)
 echo "Script excuted at $TIMESTAMP"
 
 # Taking 2 numbers and printing it's sum
-NUMBER1=$1
-NUMBER2=$2
-SUM=$(($NUMBER1+$NUMBER1))
-echo "Sum of $NUMBER1 and $NUMBER2 is $SUM"
+# NUMBER1=$1
+# NUMBER2=$2
+# SUM=$(($NUMBER1+$NUMBER1))
+# echo "Sum of $NUMBER1 and $NUMBER2 is $SUM"
 
 # Arrays 
 NAME=("Manoj" "Mantha" "Thippeswamy" "Radha" "Mounika")
@@ -46,6 +46,14 @@ echo "process id of current script : $$"
 sleep 10 &
 echo "Process id of last command in background : $!"
 
+# Condition Check given number is greater than or equal to 100 or not 
+
+if [ $1 -ge 100 ]
+then
+    echo "Given number $1 is greater than or equal to 100"
+else
+    echo "Given number $1 is less than 100"
+fi
 
 
 
