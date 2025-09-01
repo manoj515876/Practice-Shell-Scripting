@@ -90,6 +90,7 @@ then
     if [ $? -ne 0 ]
     then 
         echo "Git installing faliure"
+        exit 1
     else 
         echo "Git installing success"
     fi 
