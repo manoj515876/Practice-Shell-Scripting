@@ -34,7 +34,7 @@ NAME=("Manoj" "Mantha" "Thippeswamy" "Radha" "Mounika")
 echo "First Name : ${NAME[0]}"
 echo "Last Name : ${NAME[4]}"
 echo "Name : ${NAME[@]}"
-echo "Length : ${Name[#]}"
+
 
 
 
