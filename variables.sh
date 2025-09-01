@@ -102,7 +102,7 @@
 # Installing packages using functions and Colours 
 
 # Colours
-N="\e[30m"
+
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
