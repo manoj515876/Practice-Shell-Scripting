@@ -102,7 +102,7 @@
 # Installing packages using functions and Colours 
 
 # Colours
-
+N="\e[30m"
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -132,7 +132,7 @@ then
     dnf install mysql -y 
     VALIDATE $? "Installing mysql"
 else 
-    echo "MySQL already isntalled ... $Y SKIPPING $N"
+    echo -e "MySQL already isntalled ... $Y SKIPPING $N"
 fi
 
 dnf list installed git 
@@ -142,6 +142,6 @@ then
     dnf install git -y 
     VALIDATE $? "Installing Git"
 else 
-    echo "Git already Installed ... $Y SKIPPING $N"
+    echo -e "Git already Installed ... $Y SKIPPING $N"
 fi 
 
