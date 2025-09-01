@@ -8,8 +8,8 @@ name=Manoj
 echo "Hello $name"
 
 # Command lines Arguments $1->First argument $2->Second argument
-echo "Hi $1"
-echo "Hi $2, How can I help you"
+# echo "Hi $1"
+# echo "Hi $2, How can I help you"
 
 # Taking username and Password from user.
 echo "Enter your username"
