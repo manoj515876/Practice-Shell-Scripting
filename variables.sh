@@ -57,46 +57,85 @@
 
 #Installing sql and git using shell scripting
 
+# USERID=$(id -u)
+
+# if [ $USERID -ne 0 ]
+# then 
+#     echo "Error:: You must have sudo access to the script"
+#     exit 1
+# fi
+
+# dnf list installed mysql
+
+# if [ $? -ne 0 ]
+# then    
+#     dnf install mysql -y
+#     if [ $? -ne 0 ]
+#     then 
+#         echo "Mysql installation failure"
+#         exit 1
+#     else 
+#         echo "Mysql installation Success"
+#     fi
+# else 
+#     echo "Already mysql installed"
+# fi
+
+
+# dnf list installed git 
+
+# if [ $? -ne 0 ]
+# then 
+#     dnf install git 
+#     if [ $? -ne 0 ]
+#     then 
+#         echo "Git installing faliure"
+#         exit 1
+#     else 
+#         echo "Git installing success"
+#     fi 
+# else 
+#     echo "Git already Installed"
+# fi
+
+
+# Installing packages using functions 
+
 USERID=$(id -u)
+
+VALIDATE(){
+    if [ $1 -ne 0 ]
+    then 
+        echo "$2 ... FAILURE"
+        exit 1
+    else 
+        echo "$2 ... SUCCESS"
+    fi
+}
 
 if [ $USERID -ne 0 ]
 then 
-    echo "Error:: You must have sudo access to the script"
+    echo "ERROR:: You must have sudo access to excute the script"
     exit 1
 fi
 
 dnf list installed mysql
 
 if [ $? -ne 0 ]
-then    
-    dnf install mysql -y
-    if [ $? -ne 0 ]
-    then 
-        echo "Mysql installation failure"
-        exit 1
-    else 
-        echo "Mysql installation Success"
-    fi
+then 
+    dnf install mysql -y 
+    VALIDATE $? "Installing mysql"
 else 
-    echo "Already mysql installed"
+    echo "MySQL already isntalled ... SKIPPING"
 fi
-
 
 dnf list installed git 
 
 if [ $? -ne 0 ]
 then 
-    dnf install git 
-    if [ $? -ne 0 ]
-    then 
-        echo "Git installing faliure"
-        exit 1
-    else 
-        echo "Git installing success"
-    fi 
+    dnf install git -y 
+    VALIDATE $? "Installing Git"
 else 
-    echo "Git already Installed"
-fi
-
-
+    echo "Git already Installed ... SKIPPING"
+fi 
 
