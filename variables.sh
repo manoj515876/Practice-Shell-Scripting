@@ -149,5 +149,4 @@
 # Logs 
 
 LOG_FOLDER="/var/log/shellscripts.logs"
-LOG_FILE=$(echo $0 | cut -d "." -1f)
-echo $LOG_FILE
+echo $0
