@@ -159,51 +159,57 @@
 
 # Installing git and mysql and adding logs
 
-USERID=$(id -u) #if 0 means sudo other all are normal users.
-# Colours
-N="\e[30m" # White color
-R="\e[31m" # Red color
-G="\e[32m" # Green color
-Y="\e[33m" # Yellow color 
+# USERID=$(id -u) #if 0 means sudo other all are normal users.
+# # Colours
+# N="\e[30m" # White color
+# R="\e[31m" # Red color
+# G="\e[32m" # Green color
+# Y="\e[33m" # Yellow color 
 
-# LOG File location
-LOG_FOLDER="/var/log/shellscript-logs"
-LOG_FILE=$(echo $0 | cut -d "." -f1)
-TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
+# # LOG File location
+# LOG_FOLDER="/var/log/shellscript-logs"
+# LOG_FILE=$(echo $0 | cut -d "." -f1)
+# TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
+# LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
-VALIDATE(){
-    if [ $1 -ne 0 ]
-    then 
-        echo -e "$2 ... $R FAILURE $N"
-        exit 1
-    else 
-        echo -e "$2 ... $G SUCCESS $N"
-    fi 
-}
+# VALIDATE(){
+#     if [ $1 -ne 0 ]
+#     then 
+#         echo -e "$2 ... $R FAILURE $N"
+#         exit 1
+#     else 
+#         echo -e "$2 ... $G SUCCESS $N"
+#     fi 
+# }
 
-if [ $USERID -ne 0 ]
-then 
-    echo "ERROR:: YOu must have sudo sccess" 
-    exit 1 
-fi 
+# if [ $USERID -ne 0 ]
+# then 
+#     echo "ERROR:: YOu must have sudo sccess" 
+#     exit 1 
+# fi 
 
-mkdir -p $LOG_FOLDER
+# mkdir -p $LOG_FOLDER
 
-echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
-
-
-
-dnf list installed mysql 
-
-
-if [ $? -ne 0 ]
-then 
-    dnf install mysql -y &>>$LOG_FILE_NAME
-    VALIDATE $? "MySQL Installing"
-else 
-    echo -e "MySQL already Installed ... $Y SKIPPING $N"
-fi 
+# echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
 
 
+# dnf list installed mysql 
+
+
+# if [ $? -ne 0 ]
+# then 
+#     dnf install mysql -y &>>$LOG_FILE_NAME
+#     VALIDATE $? "MySQL Installing"
+# else 
+#     echo -e "MySQL already Installed ... $Y SKIPPING $N"
+# fi 
+
+
+
+# Loops 
+
+for i in {1..10}
+do 
+    echo $1
+done 
