@@ -152,4 +152,5 @@ LOG_FOLDER="/var/log/shellscripts-logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
-echo $LOG_FILE_NAME
+
+echo "Script started executing at: $TIMESTAMP"
