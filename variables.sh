@@ -184,21 +184,22 @@ VALIDATE(){
 
 if [ $USERID -ne 0 ]
 then 
-    echo "ERROR:: YOu must have sudo sccess"
+    echo "ERROR:: YOu must have sudo sccess" 
     exit 1 
 fi 
 
 mkdir -p $LOG_FOLDER
 
-echo "Script started executing at: $TIMESTAMP"
+echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
 
 
 dnf list installed mysql 
 
+
 if [ $? -ne 0 ]
 then 
-    dnf install mysql -y 
+    dnf install mysql -y &>>$LOG_FILE_NAME
     VALIDATE $? "MySQL Installing"
 else 
     echo -e "MySQL already Installed ... $Y SKIPPING $N"
