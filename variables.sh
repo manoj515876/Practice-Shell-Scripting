@@ -182,15 +182,17 @@ VALIDATE(){
     fi 
 }
 
-mkdir -p $LOG_FOLDER
-
-echo "Script started executing at: $TIMESTAMP"
-
 if [ $USERID -ne 0 ]
 then 
     echo "ERROR:: YOu must have sudo sccess"
     exit 1 
 fi 
+
+mkdir -p $LOG_FOLDER
+
+echo "Script started executing at: $TIMESTAMP"
+
+
 
 dnf list installed mysql 
 
