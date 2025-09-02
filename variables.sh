@@ -148,11 +148,59 @@
 
 # Logs 
 
-LOG_FOLDER="/var/log/shellscripts-logs"
+# LOG_FOLDER="/var/log/shellscripts-logs"
+# LOG_FILE=$(echo $0 | cut -d "." -f1)
+# TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
+# LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
+
+# mkdir -p /var/log/shellscripts-logs
+
+# echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
+
+# Installing git and mysql and adding logs
+
+USERID=$(id -u) #if 0 means sudo other all are normal users.
+# Colours
+N="\e[30m" # White color
+R="\e[31m" # Red color
+G="\e[32m" # Green color
+Y="\e[33m" # Yellow color 
+
+# LOG File location
+LOG_FOLDER="/var/log/shellscript-logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
-mkdir -p /var/log/shellscripts-logs
+VALIDATE(){
+    if [ $1 -ne 0 ]
+    then 
+        echo -e "$2 ... $R FAILURE $N"
+        exit 1
+    else 
+        echo -e "$2 ... $G SUCCESS $N"
+    fi 
+}
 
-echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
+mkdir -p $LOG_FOLDER
+
+echo "Script started executing at: $TIMESTAMP"
+
+if [ $USERID -ne 0 ]
+then 
+    echo "ERROR:: YOu must have sudo sccess"
+    exit 1 
+fi 
+
+dnf list installed mysql 
+
+if [ $? -ne 0 ]
+then 
+    dnf install mysql -y 
+    VALIDATE $? "MySQL Installing"
+else 
+    echo -e "MySQL already Installed ... $Y SKIPPING $N"
+fi 
+
+
+
