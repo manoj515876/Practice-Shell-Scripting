@@ -151,4 +151,5 @@
 LOG_FOLDER="/var/log/shellscripts.logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-echo "$LOG_FILE-$TIMESTAMP"
+LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
+echo $LOG_FILE_NAME
